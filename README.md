@@ -11,3 +11,6 @@ The schemas are extracted to /schema
 Click on the icon to see details
 
 The schema is verified by calling xjc on schema/
+
+## Related Projects
+![Architecture](diagram/architecture.png)
