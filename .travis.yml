@@ -1,4 +1,13 @@
 language: java
 script:
- - xjc schema/XMLSchemaV2
-
+- xjc schema/XMLSchemaV2
+- zip -r schema-$TRAVIS_BRANCH.zip schema/XMLSchemaV2
+deploy:
+  provider: releases
+  api_key:
+    secure: UGR3NFCrxJoAoi5UE1zIHraq18OLB6ZHUp7nnLzXssNASSPWgd8zsHt8d9uyRSNk3IPq+4TufEuuPfbYYlo9Ygkbb9Rn/QiTgXAQm/kqnsNcdsUYNpFwjQahCAXt8nynQeYGKw8lRU7t+I45JuPAbOPr4XIAc0qlHxg0e+mt6Zxf6Lm4OCSLUlL8Qbh2otxyAkSRtq5AemKzls0U5xcqZQbmphyG9E89rxgeQWOQ/wYCJ9ideunL+Fiz77HfSauXgXUQu6z5Oody/0WMQr3um7vNofDGlnKlUungtMtzy8EuPKBWvmb/4A0KE/Bv0dYLihdFbKf3Kxpxp18ktyCZr64J7xi9HVbk5io0hKlJYfZQH634lJ3nV3Ujd661vZfKuaAzBGf1NGcJKChdmdD52Tgm5BZNGf8rgpQ7xpJm0ipqUyoov9sEnLASm25Psdn8JK7fCtB1KvX4cpBv2A7u1Zi3fQydlHW8vA4k5i3UjIcTyawyspnqEiqWnB8f8j6UEJ30M4sxQG3CtJyd+dD1hSU/f53HMgNB77s2wmbNGoYXeslbbHnsdhmnKzg5Ckuc3ZS4LTzdos/0y+JfJaQ+iCFj2tTuUmBIr31iNIaQGLrWy5dVrZaJOFV+XTqYCR7x4WlWdepG7HC66AGktsmt+esYQAsHP02KQ3d7XkAg0O4=
+  file: schema-$TRAVIS_BRANCH.zip
+  skip_cleanup: true
+  on:
+    repo: ETDA/etax-schema
+    tags: true
